@@ -1,23 +1,23 @@
-# SNMP Informant Standard
+= SNMP Informant Standard
 
 OpenNMS configuration module for standard SNMP extension SNMP Information Standard for Microsoft Windows Server.
 
-## Installation
+== Installation
 
 .Download and install from GitHub
 [source, bash]
 ----
-cd $OPENNMS_HOME/etc/modules-available
+mkdir ${HOME}/opennms-config-workspace
+cd ${HOME}/opennms-config-workspace
 git clone https://github.com/opennms-config-modules/snmp-informant-standard.git
 ----
 
-### Datacollection
+=== Data Collection
 
 .Install datacollection configuration
 [source, bash]
 ----
-cd $OPENNMS_HOME/etc/datacollection
-ln -s ../modules-available/snmp-informant-standard/datacollection/*.xml .
+cp ${HOME}/opennms-config-workspace/smseagle-sms-gateway/datacollection/*.xml ${OPENNMS_HOME}/etc/datacollection
 ----
 
 .Include in datacollection-config.xml
@@ -26,17 +26,10 @@ ln -s ../modules-available/snmp-informant-standard/datacollection/*.xml .
 <include-collection dataCollectionGroup="SNMP-Informant-Standard"/>
 ----
 
-### Graph report definitions
+=== Graph Report Definitions
 
 .Install graph report definitions
 [source, bash]
 ----
-cd $OPENNMS_HOME/etc/snmp-graph.properties.d
-ln -s ../modules-available/snmp-informant-standard/graphs/*.properties .
+cp ${HOME}/opennms-config-workspace/smseagle-sms-gateway/graphs/*.properties ${OPENNMS_HOME}/etc/snmp-graph.properties.d
 ----
-
-# License & Authors
-
-- Author:: Ronny Trommer (<ronny@opennms.org>)
-
-Licensed under the GNU Affero General Public License 3+. You may obtain a copy of the License at http://www.gnu.org/licenses/agpl-3.0.html.
